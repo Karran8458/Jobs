@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.head
+{
+    vertical-align: top;
+}
+.leftleft
+{
+display:inline-block;
+vertical-align:top;
+}
+.rightright
+{
+display:inline-block;
+vertical-align:top; 
+}
+.container2 {
+  padding: 16px;
+  border-color:black
+}
+</style>
+</head>
+<body>
+        <div class = "head">
+                <div class = "leftleft">
+                        {% for one_friend in all_friends %}
+                        <h1>Hello {{one_friend.first_name}}! </h1>
+                        {% endfor %}
+                </div>
+                <div class = "rightright">
+                    <form action="/logout" method="POST">
+                        <input type="submit" value="Logout">
+                    </form>
+                </div>
+        </div>
+<h1>Only Viewing the Job</h1>
+    <h3>Job:</h3>
+    {% for one_result in all_result %}
+    <div class = "container2">
+        <p>Title: {{ one_result.title }}</p>
+        <p>Description: {{ one_result.description }}</p>
+        <p>Address: {{ one_result.address }}</p>
+        <p>Created at: {{ one_result.created_at }} </p>
+        <p>Updated at: {{ one_result.updated_at }} </p>
+        {% for one_friend in all_friends %}
+        <p>Posted by: {{ one_friend.first_name}}</p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <form action="/jobs" method="POST">
+        <input type="submit" value="Dashboard">
+    </form>
+</body>
+</html>
